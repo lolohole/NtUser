@@ -41,10 +41,33 @@
 <body>
   <h2>Kayıt Ol</h2>
   <form id="signup-form">
-    <input type="tel" name="phone" placeholder="Telefon Numaranız" required><br>
-    <input type="password" name="password" placeholder="Şifreniz" required><br>
-    <button type="submit">Gönder</button>
-  </form>
+  <input type="text" name="phone" placeholder="Telefon numarası" required>
+  <input type="password" name="password" placeholder="Şifre" required>
+  <button type="submit">Kayıt Ol</button>
+</form>
+
+<script>
+  const form = document.getElementById('signup-form');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const phone = form.phone.value;
+    const password = form.password.value;
+
+    fetch("https://script.google.com/macros/s/AKfycbw7xDQY1OVhDtgpvOvXfrIIyCJp0xhHCXo6ih-HHlljWpOVVi8RZMPG-DK8idUVry94rg/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: `phone=${encodeURIComponent(phone)}&password=${encodeURIComponent(password)}`
+    });
+
+    alert("Kaydınız gönderildi!");
+    form.reset();
+  });
+</script>
 
   <div class="info">
     <p>Bu sayfa <strong>basem halaika</strong> tarafından oluşturulmuştur.</p>
@@ -57,26 +80,5 @@
     </div>
   </div>
 
-  <script>
-    const form = document.getElementById('signup-form');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const phone = form.phone.value;
-      const password = form.password.value;
-
-      fetch("https://script.google.com/macros/s/AKfycbwdYhq7jQBvvKgTT6zQu5B6VMuFTJHfAl5W-8yyh-qdQ54D8l1UUYbGvUZx6T0bwBmDNg", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `phone=${phone}&password=${password}`
-      });
-
-      alert("Kaydınız başarıyla gönderildi!");
-      form.reset();
-    });
-  </script>
 </body>
 </html>
